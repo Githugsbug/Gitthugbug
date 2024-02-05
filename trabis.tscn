@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://canqomfe3wsj0"]
+
+[ext_resource type="Script" path="res://trabis.gd" id="1_0a8f0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ud6a"]
+
+[node name="Node2D" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_0a8f0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3ud6a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

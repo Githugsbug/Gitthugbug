@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh8ehuq4bkge3"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_hexfs"]
+[ext_resource type="Texture2D" uid="uid://dn3hd76xaf2wx" path="res://Sprite-0001.png" id="2_j6lob"]
+[ext_resource type="Script" path="res://weapon.gd" id="3_twlsn"]
+[ext_resource type="Texture2D" uid="uid://d0lb1k4pma1vy" path="res://spear.png" id="4_vi5mh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7taij"]
+radius = 14.0
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnr8k"]
+size = Vector2(226.596, 13.5571)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(203, 246)
+collision_mask = 3
+script = ExtResource("1_hexfs")
+jump_strength = 450
+speed = 400
+gravity = 2000
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.756863, 1)
+texture_filter = 1
+texture = ExtResource("2_j6lob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7taij")
+
+[node name="weapon" type="Area2D" parent="."]
+position = Vector2(3, 0)
+scale = Vector2(0.427419, 0.590095)
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("3_twlsn")
+
+[node name="Sprite2D" type="Sprite2D" parent="weapon"]
+modulate = Color(1, 1, 0, 1)
+texture_filter = 1
+position = Vector2(93.5849, 9.05991e-06)
+scale = Vector2(2.10122, 0.793578)
+texture = ExtResource("4_vi5mh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon"]
+position = Vector2(108.966, 0)
+shape = SubResource("RectangleShape2D_cnr8k")
+
+[connection signal="clicked" from="weapon" to="." method="hurt"]
