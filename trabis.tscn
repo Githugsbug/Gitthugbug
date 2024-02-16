@@ -1,27 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://canqomfe3wsj0"]
+[gd_scene load_steps=6 format=3 uid="uid://canqomfe3wsj0"]
 
 [ext_resource type="Script" path="res://trabis.gd" id="1_0a8f0"]
 [ext_resource type="Texture2D" uid="uid://2xguu5et6r15" path="res://pixil-frame-0 (1).png" id="2_syvtv"]
+[ext_resource type="PackedScene" path="res://physics_arrows_package.tscn" id="3_6c4dy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ud6a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4j3ao"]
-size = Vector2(12.125, 8.25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwimv"]
+size = Vector2(11, 4)
 
-[node name="Node2D" type="CharacterBody2D"]
+[node name="Character" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_0a8f0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Character hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3ud6a")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Magnet" type="Area2D" parent="."]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(9, 0)
-shape = SubResource("RectangleShape2D_4j3ao")
+[node name="Magnet Body" type="CollisionShape2D" parent="Magnet"]
+position = Vector2(8.5, -1)
+shape = SubResource("RectangleShape2D_gwimv")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D2"]
+[node name="Magnet Sprite" type="Sprite2D" parent="Magnet/Magnet Body"]
 texture_filter = 1
-position = Vector2(2, 0)
+position = Vector2(2.5, 0.5)
 texture = ExtResource("2_syvtv")
+
+[node name="PhysicsArrowsPackage" parent="." node_paths=PackedStringArray("body_to_observe") instance=ExtResource("3_6c4dy")]
+position = Vector2(24.8995, 4.2729)
+body_to_observe = NodePath("..")

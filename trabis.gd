@@ -9,7 +9,7 @@ const JUMP_HORIZONTAL = 600
 var gravity = 980
 
 func _physics_process(delta):
-
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
@@ -27,5 +27,5 @@ func _physics_process(delta):
 	#character fl;ip
 	if get_global_mouse_position().x >= position.x:
 		$Sprite2D
-
-
+	$Magnet.rotation = atan2(get_global_mouse_position().y - global_position.y, get_global_mouse_position().x - global_position.x)
+	move_and_slide()
