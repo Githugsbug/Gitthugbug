@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var magnet_stuff = $Magnet/CPUParticles2D
+@onready var magnet = $Magnet
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0	
@@ -39,5 +40,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("repel"):
 		magnet_stuff.emitting = true
 	else: magnet_stuff.emitting = false
+	
+	
+	print(magnet.get_overlapping_bodies())
+
 
 

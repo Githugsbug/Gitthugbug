@@ -16,6 +16,7 @@ size = Vector2(636, 27)
 
 [node name="slinky" type="CharacterBody2D" parent="."]
 position = Vector2(421, 233)
+collision_layer = 9
 collision_mask = 3
 script = ExtResource("2_egi71")
 bounce = 0.4
